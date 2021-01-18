@@ -1,1 +1,4 @@
-# A sort of blog posts generator.
+# Graff
+
+## A Minimal blog posts generator
+
