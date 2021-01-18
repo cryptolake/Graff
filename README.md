@@ -1,4 +1,4 @@
 # Graff
 
-## A Minimal blog posts generator
+> A Minimal HTML only blog posts generator.
 
