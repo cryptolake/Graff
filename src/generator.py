@@ -52,4 +52,3 @@ def writer(previews, blog_file, blog_class):
         li.extend(preview)
         _class_.append(li)
     return soup.prettify()
-
