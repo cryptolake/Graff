@@ -1,31 +1,12 @@
-import os
-from settings import settings
 from bs4 import BeautifulSoup
 from pathlib import Path
 
-s = settings()
 
-title_tag = s.preview_title_tag()
-preview_tag = s.preview_content_tag()
-
-# lists contents of posts by date
-dirpath = s.web_dir()+s.posts_dir()
-paths = sorted(Path(dirpath).iterdir(), key=os.path.getmtime)
-
-# open the blog file
-blog_path = Path(s.web_dir()+s.blog_page())
-blog_file = blog_path.read_text()
-
-# get the class of the parent container
-blog_class = s.preview_class()
-
-
-def gen_prevs(paths, title_tag, preview_tag):
+def gen_prevs(paths, title_tag, preview_tag, max_char):
     """generate post preview from each blog file
     :returns: list of post previews
 
     """
-    s = settings()
 
     posts = []
     for page in paths:
@@ -47,7 +28,7 @@ def gen_prevs(paths, title_tag, preview_tag):
         prev.name = preview_tag
 
         # summarization of p
-        max_char = int(s.preview_max_char())
+        max_char = int(max_char)
         char_len = len(prev.string)
 
         if char_len > max_char:
@@ -57,7 +38,7 @@ def gen_prevs(paths, title_tag, preview_tag):
     return previews
 
 
-def wirter(previews, blog_file, blog_class):
+def writer(previews, blog_file, blog_class):
     """Write the previews to the selecte file
     """
 
@@ -69,11 +50,3 @@ def wirter(previews, blog_file, blog_class):
         li.extend(preview)
         _class_.append(li)
     return soup.prettify()
-
-
-previews = gen_prevs(paths, title_tag, preview_tag)
-new_file = wirter(previews, blog_file, blog_class)
-blog_path.unlink()
-blog_path.touch()
-blog_path.write_text(new_file)
-print(paths)
