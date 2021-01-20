@@ -2,7 +2,7 @@ from bs4 import BeautifulSoup
 from pathlib import Path
 
 
-def gen_prevs(paths, title_tag, preview_tag, max_char):
+def gen_prevs(paths, title_tag, preview_tag, max_char, posts_dir):
     """generate post preview from each blog file
     :returns: list of post previews
 
@@ -10,16 +10,17 @@ def gen_prevs(paths, title_tag, preview_tag, max_char):
 
     posts = []
     for page in paths:
-        posts.append(Path(page).read_text())
+        linkp = str(page)
+        posts.append([Path(page).read_text(), linkp[linkp.find(posts_dir):]])
 
     previews = []
-
     for post in posts:
 
-        soup = BeautifulSoup(post, 'html.parser')
+        soup = BeautifulSoup(post[0], 'html.parser')
 
         prev = soup.p
         title = soup.title
+        link = soup.new_tag("a", href=post[1])
 
         # replace title tag with new tag
         title.name = title_tag
@@ -27,6 +28,7 @@ def gen_prevs(paths, title_tag, preview_tag, max_char):
         # replace p tag with the new tag
         prev.name = preview_tag
 
+        link.extend(title)
         # summarization of p
         max_char = int(max_char)
         char_len = len(prev.string)
@@ -34,7 +36,7 @@ def gen_prevs(paths, title_tag, preview_tag, max_char):
         if char_len > max_char:
             prev.string = prev.string[0:max_char]
             prev.string = prev.string+"..."
-        previews.append([title, prev])
+        previews.append([link, prev])
     return previews
 
 

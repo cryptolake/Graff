@@ -11,6 +11,7 @@ s = settings()
 title_tag = s.preview_title_tag()
 preview_tag = s.preview_content_tag()
 max_char = s.preview_max_char()
+posts_dir = s.posts_dir()
 
 # lists contents of posts by date
 dirpath = s.web_dir()+s.posts_dir()
@@ -24,7 +25,7 @@ blog_file = blog_path.read_text()
 blog_class = s.preview_class()
 
 print("generating previews....")
-previews = gen_prevs(paths, title_tag, preview_tag, max_char)
+previews = gen_prevs(paths, title_tag, preview_tag, max_char, posts_dir)
 
 print("Writing to file...")
 new_file = writer(previews, blog_file, blog_class)
