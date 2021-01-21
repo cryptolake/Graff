@@ -4,7 +4,7 @@
 
 ## Setup
 
-look at `src/settings.toml` for example config
+look at `settings.toml` for example config
 
 Set the `GRAFF_CONF` environment to the location of graff config. 
 

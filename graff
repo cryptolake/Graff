@@ -1,0 +1,122 @@
+#!/usr/bin/env python3
+import os
+import sys
+from graff_lib.settings import settings
+from graff_lib.generator import gen_prevs, writer, new
+from pathlib import Path
+
+
+def big_gen():
+    # get the class of the parent container
+    print("generating previews....")
+    previews = gen_prevs(paths, title_tag, preview_tag, max_char, posts_dir)
+
+    print("Writing to file...")
+    new_file = writer(previews, blog_file, blog_class)
+
+    # new blog file with the added previews
+    blog_path.unlink()
+    blog_path.touch()
+    blog_path.write_text(new_file)
+    print("Done.")
+
+
+def main(argv):
+    """main function
+    """
+    try:
+        if argv[1] == '-h':
+            print('Help:')
+            print('-g : to generate new blog page')
+            print('-n <blog page name> : to create blog page')
+            print('-h : to show this')
+            sys.exit()
+        elif argv[1] == '-g':
+            big_gen()
+        elif argv[1] == '-n':
+            try:
+                title = argv[2]
+            except Exception as e:
+                raise e
+                print('Please give your new page a name')
+                sys.exit(2)
+            new_file = new(title, web_dir, posts_dir, post_template)
+            print('New blog page at: ', new_file)
+    except IndexError:
+        print('try -h for the help screen')
+
+
+s = settings()
+
+# load settings
+try:
+    web_dir = s.web_dir()
+except Exception as e:
+    print("check settings file for web_dir value")
+    raise e
+
+try:
+    title_tag = s.preview_title_tag()
+except Exception as e:
+    print("check settings file for title_tag value")
+    raise e
+
+try:
+    preview_tag = s.preview_content_tag()
+except Exception as e:
+    print("check settings file for preview_content_tag value")
+    raise e
+
+try:
+    max_char = s.preview_max_char()
+except Exception as e:
+    print("check settings file for max_char value")
+    raise e
+
+try:
+    posts_dir = s.posts_dir()
+except Exception as e:
+    print("check settings file for posts_dir value")
+    raise e
+
+# lists contents of posts by date
+
+
+try:
+    dirpath = web_dir+s.posts_dir()
+except Exception as e:
+    print("check settings file for web_dir value")
+    raise e
+
+
+try:
+    paths = sorted(Path(dirpath).iterdir(), key=os.path.getmtime)
+except Exception as e:
+    print("make sure the path for the posts directory exists")
+    raise e
+
+# open the blog file
+
+
+try:
+    blog_path = Path(web_dir+s.blog_page())
+except Exception as e:
+    print("check settings file for blog_page value")
+    raise e
+
+try:
+    blog_class = s.preview_class()
+except Exception as e:
+    print("check preview_class in settings")
+    raise e
+
+try:
+    post_template = s.post_template()
+except Exception as e:
+    print("\n check post_template in settings \n")
+    raise e
+
+blog_file = blog_path.read_text()
+
+if __name__ == "__main__":
+    main(sys.argv)
