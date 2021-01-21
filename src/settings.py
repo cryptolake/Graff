@@ -14,6 +14,10 @@ class settings:
         # returns website directory
         return self.tomlf["files"]["web_dir"]
 
+    def post_template(self):
+        # returns website directory
+        return self.tomlf["files"]["post_template"]
+
     def posts_dir(self):
         # returns posts directory
         return self.tomlf["files"]["posts_dir"]

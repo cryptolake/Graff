@@ -1,25 +1,28 @@
 [files]
 
-	# website directory
-	web_dir="/srv/www/"
+# website directory
+web_dir="/srv/www/"
 
-	# posts directory
-	posts_dir="posts"
+# posts directory
+posts_dir="posts"
 
-	# page to put blog previews
-	blog_page="index.html"
+# page to put blog previews
+blog_page="index.html"
+
+# there should be template file in web_dir
+post_template="template.html"
 
 [blog]
         # class of the parent element of the blog previews
-        preview_class="blog"
+preview_class="blog"
 
-        preview_container_tag="ul"
+preview_container_tag="ul"
 
-        preview_tag="il"
+preview_tag="il"
 
-        preview_title_tag="h3"
+preview_title_tag="h3"
 
-        preview_content_tag="p"
+preview_content_tag="p"
 
-        # the preview content max characters before ending with "..."
-        preview_max_char="100"
+# the preview content max characters before ending with "..."
+preview_max_char="100"

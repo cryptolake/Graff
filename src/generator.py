@@ -52,3 +52,20 @@ def writer(previews, blog_file, blog_class):
         li.extend(preview)
         _class_.append(li)
     return soup.prettify()
+
+
+def new(title, web_dir, posts_dir, post_template):
+    """ generate new blog page and put title there
+    """
+
+    temp_path = Path(web_dir+post_template)
+    template = temp_path.read_text()
+    soup = BeautifulSoup(template, 'html.parser')
+    name = soup.title
+    name.clear()
+    name.extend(title)
+    new_file = "/"+title+".html"
+    new_path = web_dir+posts_dir+new_file
+    Path(new_path).touch()
+    Path(new_path).write_text(str(soup))
+    return new_path
