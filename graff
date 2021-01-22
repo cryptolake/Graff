@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 import os
 import sys
-from graff_gen.settings import settings
-from graff_gen.generator import gen_prevs, writer, new
+from pygraff.settings import settings
+from pygraff.generator import gen_prevs, writer, new
 from pathlib import Path
 
 

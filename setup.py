@@ -12,7 +12,7 @@ from shutil import rmtree
 from setuptools import setup, Command
 
 # Package meta-data.
-NAME = 'graff_gen'
+NAME = 'pygraff'
 DESCRIPTION = 'An overkill blog previews generator'
 URL = 'https://github.com/cryptolake/Graff'
 EMAIL = 'dhiadah@gmail.com'
@@ -101,7 +101,7 @@ setup(
     author_email=EMAIL,
     python_requires=REQUIRES_PYTHON,
     url=URL,
-    packages=['graff_gen'],
+    packages=['pygraff'],
     # If your package is a single module, use this instead of 'packages':
     # py_modules=['mypackage'],
 
