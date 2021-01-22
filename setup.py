@@ -18,7 +18,7 @@ URL = 'https://github.com/cryptolake/Graff'
 EMAIL = 'dhiadah@gmail.com'
 AUTHOR = 'Dhia'
 REQUIRES_PYTHON = '>=3.7.0'
-VERSION = '1.0'
+VERSION = '1.1'
 
 # What packages are required for this module to be executed?
 REQUIRED = [
