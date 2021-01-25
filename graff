@@ -83,7 +83,7 @@ except Exception as e:
 
 
 try:
-    dirpath = web_dir+s.posts_dir()
+    dirpath = str(web_dir+s.posts_dir())
 except Exception as e:
     print("check settings file for web_dir value")
     raise e

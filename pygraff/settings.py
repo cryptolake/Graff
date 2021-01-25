@@ -8,8 +8,8 @@ class settings:
 
     def __init__(self):
         self.settings_path = os.environ['GRAFF_CONF']
-        conf = configparser.ConfigParser()
-        self.config = conf.read(self.settings_path)
+        self.config = configparser.ConfigParser()
+        self.config.read(self.settings_path)
 
     def web_dir(self):
         # returns website directory
