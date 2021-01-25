@@ -18,12 +18,11 @@ URL = 'https://github.com/cryptolake/Graff'
 EMAIL = 'dhiadah@gmail.com'
 AUTHOR = 'Dhia'
 REQUIRES_PYTHON = '>=3.7.0'
-VERSION = '1.1'
+VERSION = '1.2'
 
 # What packages are required for this module to be executed?
 REQUIRED = [
-    'beautifulsoup4',
-    'toml'
+    'beautifulsoup4'
     # 'requests', 'maya', 'records',
 ]
 
