@@ -14,9 +14,7 @@ Copy the [example settings file](/blob/master/settings) to the chosen path and c
 
 ## Usage
 
-Here's a video going through the steps of the generation.
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/giPiaubVhrA" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+Here's a [video](https://youtu.be/giPiaubVhrA) going through the steps of the generation.
 
 `graff -n <Page name>` to create new blog page in posts_dir.
 
