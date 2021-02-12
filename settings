@@ -13,7 +13,7 @@ blog_page="index.html"
 post_template="template.html"
 
 [blog]
-        # class of the parent element of the blog previews
+# class of the parent element of the blog previews
 preview_class="blog"
 
 preview_container_tag="ul"

@@ -4,7 +4,7 @@ import os
 
 class settings:
 
-    """Read settings from toml file"""
+    """Read settings from settings file"""
 
     def __init__(self):
         self.settings_path = os.environ['GRAFF_CONF']
@@ -15,7 +15,7 @@ class settings:
         # returns website directory
         return self.config["files"]["web_dir"]
 
-    def post_template(self):
+    def post_templat(self):
         # returns website directory
         return self.config["files"]["post_template"]
 
