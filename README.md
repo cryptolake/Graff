@@ -10,7 +10,7 @@
 
 Set the `GRAFF_CONF` environment to the path of graff settings file.
 
-Copy the [example settings file](/blob/master/settings) to the chosen path and change what needs to be changed.
+Copy the [example settings file](/settings) to the chosen path and change what needs to be changed.
 
 ## Usage
 
